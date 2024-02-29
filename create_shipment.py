@@ -1,7 +1,14 @@
 import settings
+import script_functions
 import easypost
 
-client = easypost.EasyPostClient(settings.EASYPOST_TEST_KEY)
+environment = script_functions.get_environment()
+
+if environment == "test":
+    client = easypost.EasyPostClient(settings.EASYPOST_TEST_KEY)
+if environment == "production":
+    client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
+
 
 shipment = client.shipment.create(
     from_address = {
