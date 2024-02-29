@@ -17,7 +17,7 @@ How to get started:
       pip install easypost
 </ol>
 
-When writing a new script be sure to import EasyPost:
+When writing a new script be sure to import the EasyPost library:
 ```python
     import easypost
 ```
