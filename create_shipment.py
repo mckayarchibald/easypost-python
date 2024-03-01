@@ -1,34 +1,35 @@
 import settings
-import script_functions
 import easypost
+import dad_tool
 
-environment = script_functions.get_environment()
-
-if environment == "test":
+if settings.ENVIRONMENT == "test":
     client = easypost.EasyPostClient(settings.EASYPOST_TEST_KEY)
-if environment == "production":
+if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 
+to_address = dad_tool.random_address('US_UT')
+from_address = dad_tool.random_address('US_NY')
 
 shipment = client.shipment.create(
     from_address = {
         "name": "EasyPost",
-        "street1": "118 2nd Street",
-        "street2": "4th Floor",
-        "city": "San Francisco",
-        "state": "CA",
-        "zip": "94105",
-        "country": "US",
+        "street1": from_address.street1,
+        "street2": from_address.street2,
+        "city": from_address.city,
+        "state": from_address.state,
+        "zip": from_address.zip,
+        "country": from_address.country,
         "phone": "415-456-7890",
     },
     to_address = {
-        "name": "Dr. Steve Brule",
-        "street1": "179 N Harbor Dr",
-        "city": "Redondo Beach",
-        "state": "CA",
-        "zip": "90277",
-        "country": "US",
-        "phone": "310-808-5243",
+        "name": "EasyPost",
+        "street1": to_address.street1,
+        "street2": to_address.street2,
+        "city": to_address.city,
+        "state": to_address.state,
+        "zip": to_address.zip,
+        "country": to_address.country,
+        "phone": "415-456-7890",
     },
     parcel = {
         "length": 10.2,
