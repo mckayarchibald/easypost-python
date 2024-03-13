@@ -62,13 +62,6 @@ return_address = {
     "phone": "415-456-7890",
 }
 
-# PARCEL:
-parcel = {
-    "length": 10.2,
-    "width": 7.8,
-    "height": 4.3,
-}
-
 # CUSTOMS INFORMATION:
 customs_info = {
     "eel_pfc": "NOEEI 30.37(a)",
@@ -92,16 +85,17 @@ customs_info = {
     ],
 }
 
-
 # SHIPMENT CREATE ////////////////////////////////////////////////////////////////////////////////////////////////////////
 try:
     shipment = client.shipment.create(
         from_address = from_address,
-        # return_address = return_address,
         to_address = to_address,
+        # return_address = return_address,
         # buyer_address = buyer_address,
         parcel = {
-            **parcel,
+            "length": 10.2,
+            "width": 7.8,
+            "height": 4.3,
             "weight": 21.2,
             # "predefined_package": "LargeFlatRateBox",
         },
