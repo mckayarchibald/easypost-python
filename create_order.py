@@ -7,8 +7,7 @@ if settings.ENVIRONMENT == "test":
 if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 
-# SHIPMENT PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
-# ADDRESS:
+# ADDRESSES:
 utah_address = dad_tool.random_address('US_UT')
 california_address = dad_tool.random_address('US_CA')
 canada_address = dad_tool.random_address('CA_BC')
@@ -84,52 +83,24 @@ customs_info = {
         },
     ],
 }
-
-# SHIPMENT CREATE ////////////////////////////////////////////////////////////////////////////////////////////////////////
 try:
-    shipment = client.shipment.create(
-        from_address = from_address,
+    order = client.order.create(
         to_address = to_address,
-        # return_address = return_address,
-        # buyer_address = buyer_address,
-        parcel = {
-            "length": 10.2,
-            "width": 7.8,
-            "height": 4.3,
-            "weight": 21.2,
-            # "predefined_package": "LargeFlatRateBox",
-        },
-        # customs_info = customs_info,
-        options = {
-            # "label_size": "4x6",
-            # "label_format": "PDF",
-            # "print_custom_1": "Print Custom 1",
-            # "print_custom_2": "Print Custom 2",
-            # "print_custom_3": "Print Custom 3",
-        },
-        carrier_accounts = [settings.carriers['DPD']],
-        # service = "GroundAdvantage",
-    )   
-except:
-    print("...uh oh")    
-
-# SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-# LOWEST RATE:
-try:
-    bought_shipment = client.shipment.buy(
-        shipment.id,
-        rate=shipment.lowest_rate()
+        from_address = from_address,
+        shipments = [
+            {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 10.2,
+                }
+            },
+            {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 17.5,
+                }
+            },
+        ],
     )
-    print(bought_shipment)
-except: 
-    print("...uh oh")
-
-# SPECIFIC CARRIER AND SERVICE:
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate(["USPS"], ["First"])
-#     )
-#     print(bought_shipment)
-# except: 
-#     print("It did not work")
+except:
+    print("...uh oh") 

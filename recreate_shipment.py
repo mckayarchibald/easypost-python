@@ -17,18 +17,18 @@ shipment = client.shipment.create(
     parcel=shipment_data['parcel'],
     customs_info=shipment_data.get('customs_info', None),
     options=shipment_data['options'],
-    carrier_accounts=[settings.carriers['USPS']],
+    carrier_accounts=[settings.carriers['FEDEX']],
     tax_identifiers=shipment_data.get('tax_identifiers', None)
 )
 
-try:
-    bought_shipment = client.shipment.buy(
-        shipment.id,
-        rate=shipment.lowest_rate()
-    )
-    print(bought_shipment)
-except: 
-    print("...uh oh")
+# try:
+#     bought_shipment = client.shipment.buy(
+#         shipment.id,
+#         rate=shipment.lowest_rate()
+#     )
+#     print(bought_shipment)
+# except: 
+#     print("...uh oh")
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:

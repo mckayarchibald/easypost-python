@@ -8,4 +8,6 @@ ENVIRONMENT = "test"
 
 carriers = {
     "USPS": os.getenv("USPS"),
+    "FEDEX": os.getenv("FEDEX"),
+    "DPD": os.getenv("DPD")
 }
