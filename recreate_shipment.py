@@ -12,7 +12,6 @@ with open('recreate_data.json') as recreate_data:
 
 
 # SHIPMENT PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
-
 # ADDRESSES:
 to_address = {
     "name": shipment_data['to_address']['name'],
@@ -48,6 +47,7 @@ customs_info = {
     "restriction_type": shipment_data['customs_info']['restriction_type'],
     "restriction_comments": shipment_data['customs_info']['restriction_comments'],
     "non_delivery_option": shipment_data['customs_info']['non_delivery_option'],
+    # The customs items need to be dynamically imported
     "customs_items": [
         {
             "description": "Sweet shirts",
@@ -89,8 +89,8 @@ try:
         rate=shipment.lowest_rate()
     )
     print(bought_shipment.id)
-except: 
-    print("...uh oh")
+except Exception as error:
+  print("...uh oh: ", error) 
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:
@@ -99,5 +99,5 @@ except:
 #         rate=shipment.lowest_rate(["USPS"], ["First"])
 #     )
 #     print(bought_shipment)
-# except: 
-#     print("...uh oh")
+# except Exception as error:
+#      print("...uh oh: ", error) 
