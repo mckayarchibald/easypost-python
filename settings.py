@@ -9,5 +9,6 @@ ENVIRONMENT = "test"
 carriers = {
     "USPS": os.getenv("USPS"),
     "FEDEX": os.getenv("FEDEX"),
+    "FEDEX_MAILVIEW": os.getenv("FEDEX_MAILVIEW"),
     "DPD": os.getenv("DPD")
 }

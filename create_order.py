@@ -104,3 +104,14 @@ try:
     )
 except:
     print("...uh oh") 
+
+# BUY SPECIFIC CARRIER AND SERVICE:
+try:
+    bought_order = client.shipment.buy(
+        order.id,
+        carrier="USPS",
+        service="First"
+    )
+    print(bought_order)
+except: 
+    print("It did not work")

@@ -12,11 +12,32 @@ if settings.ENVIRONMENT == "production":
 utah_address = dad_tool.random_address('US_UT')
 california_address = dad_tool.random_address('US_CA')
 canada_address = dad_tool.random_address('CA_BC')
+custom_recepient_address = {
+      "name": "Amanda Miller",
+      "street1": "525 S Winchester Blvd",
+      "street2": "",
+      "city": "San Jose",
+      "state": "CA",
+      "zip": "95128",
+      "country": "US",
+      "phone": "9999999999"
+}
+custom_sender_address = {
+      "name": "Walmart",
+      "street1": "5597 S WALTON BLVD",
+      "street2": "",
+      "city": "BENTONVILL",
+      "state": "AR",
+      "zip": "72712",
+      "country": "US",
+      "phone": "9999999999"
+}
 
-destination = california_address
-buyer = california_address
-origin = utah_address
-return_destination = utah_address
+destination = custom_recepient_address
+buyer = custom_recepient_address
+origin = custom_sender_address
+return_destination = custom_sender_address
+
 
 to_address = {
     "name": "EasyPost",
@@ -107,22 +128,24 @@ try:
             # "print_custom_2": "Print Custom 2",
             # "print_custom_3": "Print Custom 3",
         },
-        carrier_accounts = [settings.carriers['DPD']],
-        # service = "GroundAdvantage",
+        carrier_accounts = [settings.carriers['FEDEX_MAILVIEW']],
+        # service = "Priority",
     )   
-except:
-    print("...uh oh")    
+
+    # print(shipment)
+except Exception as error:
+  print("...uh oh: ", error)  
 
 # SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # LOWEST RATE:
-try:
-    bought_shipment = client.shipment.buy(
-        shipment.id,
-        rate=shipment.lowest_rate()
-    )
-    print(bought_shipment)
-except: 
-    print("...uh oh")
+# try:
+#     bought_shipment = client.shipment.buy(
+#         shipment.id,
+#         rate=shipment.lowest_rate()
+#     )
+#     print(bought_shipment)
+# except Exception as error:
+#   print("...uh oh: ", error)
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:

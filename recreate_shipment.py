@@ -21,6 +21,8 @@ shipment = client.shipment.create(
     tax_identifiers=shipment_data.get('tax_identifiers', None)
 )
 
+print(shipment)
+
 # try:
 #     bought_shipment = client.shipment.buy(
 #         shipment.id,
