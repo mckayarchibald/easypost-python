@@ -10,6 +10,7 @@ if settings.ENVIRONMENT == "production":
 with open('recreate_data.json') as recreate_data:
     shipment_data = json.load(recreate_data)
 
+# CREATE SHIPMENT ////////////////////////////////////////////////////////////////////////////////////////////////////////
 shipment = client.shipment.create(
     is_return=shipment_data.get('is_return', False),
     to_address=shipment_data['to_address'],
@@ -23,14 +24,16 @@ shipment = client.shipment.create(
 
 print(shipment)
 
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate()
-#     )
-#     print(bought_shipment)
-# except: 
-#     print("...uh oh")
+# SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# LOWEST RATE:
+try:
+    bought_shipment = client.shipment.buy(
+        shipment.id,
+        rate=shipment.lowest_rate()
+    )
+    print(bought_shipment)
+except: 
+    print("...uh oh")
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:
@@ -41,5 +44,3 @@ print(shipment)
 #     print(bought_shipment)
 # except: 
 #     print("...uh oh")
-
-    

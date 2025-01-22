@@ -2,3 +2,6 @@
 /env 
 .env
 **/__pycache__
+
+#DATA
+recreate_data.json
