@@ -16,6 +16,7 @@ with open('recreate_data.json') as recreate_data:
 # ADDRESSES:
 to_address = {
     "name": shipment_data['to_address']['name'],
+    "company": shipment_data['to_address']['company'],
     "street1": shipment_data['to_address']['street1'],
     "street2": shipment_data['to_address']['street2'],
     "city": shipment_data['to_address']['city'],
@@ -27,6 +28,7 @@ to_address = {
 
 from_address = {
     "name": shipment_data['from_address']['name'],
+    "company": shipment_data['from_address']['company'],
     "street1": shipment_data['from_address']['street1'],
     "street2": shipment_data['from_address']['street2'],
     "city": shipment_data['from_address']['city'],
