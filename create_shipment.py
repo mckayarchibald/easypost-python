@@ -8,7 +8,8 @@ if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 
 # SHIPMENT PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
-# ADDRESS:
+
+# ADDRESSES:
 utah_address = dad_tool.random_address('US_UT')
 california_address = dad_tool.random_address('US_CA')
 canada_address = dad_tool.random_address('CA_BC')
@@ -132,7 +133,7 @@ try:
         # service = "Priority",
     )   
 
-    # print(shipment)
+    print(shipment.id)
 except Exception as error:
   print("...uh oh: ", error)  
 
