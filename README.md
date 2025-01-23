@@ -28,4 +28,4 @@ if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 ```
 
-The current scripts are tested to work with `easypost-9.5.0`
+NOTE: The current scripts are tested to work with `easypost-9.5.0`
