@@ -1,5 +1,6 @@
 import easypost
 import settings
+import time
 
 if settings.ENVIRONMENT == "test":
     client = easypost.EasyPostClient(settings.EASYPOST_TEST_KEY)
@@ -8,13 +9,26 @@ if settings.ENVIRONMENT == "production":
 
 # SCANFORM PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-batch_id = "batch_250e9353c696411bab8780e3366cc1ae"
+batch_id = "batch_039a8069fca64f809e82b756a2e4553b"
 
-# CREATE SCANFORM ////////////////////////////////////////////////////////////////////////////////////////////////////////
+# CREATE SCANFORM FROM BATCH ////////////////////////////////////////////////////////////////////////////////////////////////////////
 try:
-    scanform = client.batch.create_scan_form(batch_id)
+    batch = client.batch.create_scan_form(batch_id)
+    scanform = batch.scan_form
 
-    print(scanform.id)
+    print("Scanform: ", scanform.id)
+    while scanform.status != "created":
+        print("Checking scanform status...")
+        print(f"The current scanform status is '{scanform.status}'")
+        time.sleep(3)
+        batch = client.batch.retrieve(batch_id)
+        scanform = batch.scan_form
+        if scanform.status == "failed":
+            print("There was an error in creating the scanform:\n", scanform.message)
+            break
+    
+    if scanform.status == "created":
+        print(f"The current scanform status is '{scanform.status}'")
 
 except Exception as error:
   print("...uh oh: ", error) 
