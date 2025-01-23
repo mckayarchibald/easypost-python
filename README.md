@@ -17,7 +17,13 @@ How to get started:
       pip install easypost
 </ol>
 
-When writing a new script be sure to import the EasyPost library:
+When writing a new script add the following to the top to set up the evironment:
 ```python
-    import easypost
+import easypost
+import settings
+
+if settings.ENVIRONMENT == "test":
+    client = easypost.EasyPostClient(settings.EASYPOST_TEST_KEY)
+if settings.ENVIRONMENT == "production":
+    client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 ```
