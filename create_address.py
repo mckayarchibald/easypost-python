@@ -15,9 +15,9 @@ try:
         zip="V2Y 3J1",
         country="Canada",
         company="",
-        name="",
+        name=None,
         phone="",
-        verify=True
+        # verify=True
     ) 
 
     print(address)

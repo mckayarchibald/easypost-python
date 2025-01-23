@@ -7,8 +7,9 @@ EASYPOST_TEST_KEY = os.getenv('EASYPOST_TEST_KEY')
 ENVIRONMENT = "test"
 
 carriers = {
-    "USPS": os.getenv("USPS"),
+    "AUSTRALIA_POST": os.getenv("AUSTRALIA_POST")
+    "DPD": os.getenv("DPD"),
     "FEDEX": os.getenv("FEDEX"),
     "FEDEX_MAILVIEW": os.getenv("FEDEX_MAILVIEW"),
-    "DPD": os.getenv("DPD")
+    "USPS": os.getenv("USPS"),
 }

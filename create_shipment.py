@@ -8,7 +8,6 @@ if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 
 # SHIPMENT PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
-
 # ADDRESSES:
 utah_address = dad_tool.random_address('US_UT')
 california_address = dad_tool.random_address('US_CA')
@@ -123,13 +122,9 @@ try:
         },
         # customs_info = customs_info,
         options = {
-            # "label_size": "4x6",
-            # "label_format": "PDF",
-            # "print_custom_1": "Print Custom 1",
-            # "print_custom_2": "Print Custom 2",
-            # "print_custom_3": "Print Custom 3",
+            "hazmat": "PRIMARY_CONTAINED",
         },
-        carrier_accounts = [settings.carriers['FEDEX_MAILVIEW']],
+        carrier_accounts = [settings.carriers['AUSTRALIA_POST']],
         # service = "Priority",
     )   
 
@@ -139,14 +134,14 @@ except Exception as error:
 
 # SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # LOWEST RATE:
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate()
-#     )
-#     print(bought_shipment)
-# except Exception as error:
-#   print("...uh oh: ", error)
+try:
+    bought_shipment = client.shipment.buy(
+        shipment.id,
+        rate=shipment.lowest_rate()
+    )
+    print(bought_shipment.id)
+except Exception as error:
+  print("...uh oh: ", error)
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:
