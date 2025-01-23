@@ -12,6 +12,9 @@ if settings.ENVIRONMENT == "production":
 utah_address = dad_tool.random_address('US_UT')
 california_address = dad_tool.random_address('US_CA')
 canada_address = dad_tool.random_address('CA_BC')
+australia_address_1 = dad_tool.random_address('AU_VT')
+australia_address_2 = dad_tool.random_address('AU_VT')
+
 custom_recepient_address = {
       "name": "Amanda Miller",
       "street1": "525 S Winchester Blvd",
@@ -33,10 +36,10 @@ custom_sender_address = {
       "phone": "9999999999"
 }
 
-destination = custom_recepient_address
-buyer = custom_recepient_address
-origin = custom_sender_address
-return_destination = custom_sender_address
+destination = australia_address_1
+buyer = australia_address_1
+origin = australia_address_2
+return_destination = australia_address_2
 
 
 to_address = {
@@ -122,7 +125,7 @@ try:
         },
         # customs_info = customs_info,
         options = {
-            "hazmat": "PRIMARY_CONTAINED",
+            # "hazmat": "PRIMARY_CONTAINED",
         },
         carrier_accounts = [settings.carriers['AUSTRALIA_POST']],
         # service = "Priority",
