@@ -9,11 +9,13 @@ if settings.ENVIRONMENT == "production":
 
 # SHIPMENT PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ADDRESSES:
-utah_address = dad_tool.random_address('US_UT')
-california_address = dad_tool.random_address('US_CA')
-canada_address = dad_tool.random_address('CA_BC')
 australia_address_1 = dad_tool.random_address('AU_VT')
 australia_address_2 = dad_tool.random_address('AU_VT')
+california_address = dad_tool.random_address('US_CA')
+canada_address = dad_tool.random_address('CA_BC')
+france_address = dad_tool.random_address('EU_FR')
+germany_address = dad_tool.random_address('EU_DE')
+utah_address = dad_tool.random_address('US_UT')
 
 custom_recepient_address = {
       "name": "Amanda Miller",
@@ -36,14 +38,14 @@ custom_sender_address = {
       "phone": "9999999999"
 }
 
-destination = australia_address_1
-buyer = australia_address_1
-origin = australia_address_2
-return_destination = australia_address_2
+destination = germany_address
+buyer = germany_address
+origin = utah_address
+return_destination = utah_address
 
 
 to_address = {
-    "name": "EasyPost",
+    "name": "McKay Archibald",
     "street1": destination['street1'],
     "street2": destination['street2'],
     "city": destination['city'],
@@ -51,6 +53,7 @@ to_address = {
     "zip": destination['zip'],
     "country": destination['country'],
     "phone": "415-456-7890",
+    "email": "mckay@example.com"
 }
 
 buyer_address = {
@@ -65,7 +68,7 @@ buyer_address = {
 }
 
 from_address = {
-    "name": "EasyPost",
+    "name": "McKay Archibald",
     "street1": origin['street1'],
     "street2": origin['street2'],
     "city": origin['city'],
@@ -73,6 +76,7 @@ from_address = {
     "zip": origin['zip'],
     "country": origin['country'],
     "phone": "415-456-7890",
+    "email": "mckay@example.com"
 }
 
 return_address = {
@@ -117,17 +121,16 @@ try:
         # return_address = return_address,
         # buyer_address = buyer_address,
         parcel = {
-            "length": 10.2,
-            "width": 7.8,
-            "height": 4.3,
-            "weight": 21.2,
+            "length": 48,
+            "width": 5,
+            "height": 5,
+            "weight": 115.2,
             # "predefined_package": "LargeFlatRateBox",
         },
-        # customs_info = customs_info,
+        customs_info = customs_info,
         options = {
-            # "hazmat": "PRIMARY_CONTAINED",
         },
-        carrier_accounts = [settings.carriers['AUSTRALIA_POST']],
+        carrier_accounts = [settings.carriers['FEDEX']],
         # service = "Priority",
     )   
 

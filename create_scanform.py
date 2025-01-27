@@ -18,8 +18,8 @@ try:
 
     print("Scanform: ", scanform.id)
     while scanform.status != "created":
-        print("Checking scanform status...")
         print(f"The current scanform status is '{scanform.status}'")
+        print("Checking scanform status...")
         time.sleep(3)
         batch = client.batch.retrieve(batch_id)
         scanform = batch.scan_form

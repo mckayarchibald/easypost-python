@@ -30,4 +30,4 @@ if settings.ENVIRONMENT == "production":
 
 ---
 
-> The current scripts are tested to work with easypost-9.5.0
+The current scripts are tested to work with `easypost-9.5.0`
