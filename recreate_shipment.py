@@ -72,11 +72,11 @@ shipment = client.shipment.create(
         "width": shipment_data['parcel']['width'],
         "height": shipment_data['parcel']['height'],
         "weight": shipment_data['parcel']['weight'],
-        # "predefined_package": shipment_data['parcel']['predefined_package'],
+        "predefined_package": shipment_data['parcel']['predefined_package'],
     },
     # customs_info=customs_info,
     options=shipment_data['options'],
-    carrier_accounts=[settings.carriers['FEDEX']],
+    carrier_accounts=[settings.carriers['USPS']],
 )
 
 print(shipment.id)
@@ -93,11 +93,11 @@ print(shipment.id)
 #   print("...uh oh: ", error) 
 
 # SPECIFIC CARRIER AND SERVICE:
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate(["USPS"], ["First"])
-#     )
-#     print(bought_shipment)
-# except Exception as error:
-#      print("...uh oh: ", error) 
+try:
+    bought_shipment = client.shipment.buy(
+        shipment.id,
+        rate=shipment.lowest_rate(["USPS"], ["First"])
+    )
+    print(bought_shipment)
+except Exception as error:
+     print("...uh oh: ", error) 
