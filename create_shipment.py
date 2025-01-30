@@ -38,8 +38,8 @@ custom_sender_address = {
       "phone": "9999999999"
 }
 
-destination = germany_address
-buyer = germany_address
+destination = california_address
+buyer = california_address
 origin = utah_address
 return_destination = utah_address
 
@@ -121,16 +121,19 @@ try:
         # return_address = return_address,
         # buyer_address = buyer_address,
         parcel = {
-            "length": 48,
-            "width": 5,
-            "height": 5,
-            "weight": 115.2,
-            # "predefined_package": "LargeFlatRateBox",
+            # "length": 48,
+            # "width": 5,
+            # "height": 5,
+            "weight": 1,
+            "predefined_package": "Letter",
         },
         customs_info = customs_info,
         options = {
+           "certified_mail": True,
+           "label_format": "PDF",
+           "label_size": "8.5x11"
         },
-        carrier_accounts = [settings.carriers['FEDEX']],
+        carrier_accounts = [settings.carriers['USPS']],
         # service = "Priority",
     )   
 
