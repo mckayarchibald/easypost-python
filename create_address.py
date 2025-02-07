@@ -8,16 +8,16 @@ if settings.ENVIRONMENT == "production":
 
 try:
     address = client.address.create(
-        street1="Garbage",
+        street1="655 South Monaco Street Parkway",
         street2="",
-        city="Garbage",
-        state="Garbage",
-        zip="V2Y 3J1",
-        country="Canada",
+        city="Denver",
+        state="Colorado",
+        zip="80224",
+        country="US",
         company="",
-        name=None,
+        name="Mike Hammond",
         phone="",
-        # verify=True
+        verify=True
     ) 
 
     print(address)

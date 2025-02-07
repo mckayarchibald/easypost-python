@@ -12,7 +12,10 @@ carriers = {
     "DHL_PAKET": os.getenv("DHL_PAKET"),
     "DPD": os.getenv("DPD"),
     "FEDEX": os.getenv("FEDEX"),
+    "FEDEX_DEFAULT": os.getenv("FEDEX_DEFAULT"),
     "FEDEX_MAILVIEW": os.getenv("FEDEX_MAILVIEW"),
+    "LASERSHIP": os.getenv("LASERSHIP"),
     "UPS": os.getenv("UPS"),
+    "UPS_MAILINNOVATIONS": os.getenv("UPS_MAILINNOVATIONS"),
     "USPS": os.getenv("USPS"),
 }

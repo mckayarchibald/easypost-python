@@ -12,8 +12,8 @@ utah_address = dad_tool.random_address('US_UT')
 california_address = dad_tool.random_address('US_CA')
 canada_address = dad_tool.random_address('CA_BC')
 
-destination = california_address
-buyer = california_address
+destination = canada_address
+buyer = canada_address
 origin = utah_address
 return_destination = utah_address
 
@@ -74,9 +74,9 @@ customs_info = {
     "customs_items": [
         {
             "description": "Sweet shirts",
-            "quantity": 2,
+            "quantity": 12,
             "weight": 5,
-            "value": 23,
+            "value": 222,
             "hs_tariff_number": "654321",
             "origin_country": "US",
             "code": "1234",
@@ -91,14 +91,85 @@ try:
             {
                 "parcel": {
                     # "predefined_package": "FedExBox",
-                    "weight": 10.2,
-                }
+                    "weight": 30,
+                },
+                "customs_info": customs_info
             },
             {
                 "parcel": {
                     # "predefined_package": "FedExBox",
-                    "weight": 17.5,
-                }
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },            {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
+            },
+                        {
+                "parcel": {
+                    # "predefined_package": "FedExBox",
+                    "weight": 30,
+                },
+                "customs_info": customs_info
             },
         ],
     )
@@ -107,10 +178,10 @@ except:
 
 # BUY SPECIFIC CARRIER AND SERVICE:
 try:
-    bought_order = client.shipment.buy(
+    bought_order = client.order.buy(
         order.id,
-        carrier="USPS",
-        service="First"
+        carrier="FedEx",
+        service="INTERNATIONAL_ECONOMY"
     )
     print(bought_order)
 except: 
