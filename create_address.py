@@ -8,15 +8,15 @@ if settings.ENVIRONMENT == "production":
 
 try:
     address = client.address.create(
-        street1="655 South Monaco Street Parkway",
+        street1="10 Persiaran KLCC Level 33",
         street2="",
-        city="Denver",
-        state="Colorado",
-        zip="80224",
-        country="US",
+        city="Kuala Lumpur",
+        state="",
+        zip="50088",
+        country="MY",
         company="",
-        name="Mike Hammond",
-        phone="",
+        name="SM Nasarudin",
+        phone="60192887878",
         verify=True
     ) 
 
