@@ -102,7 +102,7 @@ customs_info = {
     "non_delivery_option": "return",
     "customs_items": [
         {
-            "description": "Sweet shirts",
+            "description": "Sweat shirts",
             "quantity": 2,
             "weight": 5,
             "value": 23,
@@ -129,12 +129,8 @@ try:
         },
         # customs_info = customs_info,
         options = {
-"delivery_max_datetime":"2025-02-08T21:12:48+00:00",
-"dropoff_max_datetime":"2025-02-07T19:12:48Z",
-"pickup_max_datetime":"2025-02-07T18:12:48+00:00",
-"pickup_min_datetime":"2025-02-07T16:12:48+00:00",
         },
-        carrier_accounts = [settings.carriers['LASERSHIP']],
+        carrier_accounts = [settings.carriers['FEDEX']],
         # service = "Priority",
     )   
 
