@@ -65,13 +65,13 @@ return_address = {
 
 # Copy all customs items
 customs_items = shipment_data['customs_info']['customs_items']
-# Delete unessecary keys in each customs item
+# Delete the unessecary keys in each customs item
 for customs_item in customs_items:
     del customs_item['id']
     del customs_item['object']
     del customs_item['created_at']
     del customs_item['updated_at']
-
+    del customs_item['mode']
 
 customs_info = {
     "eel_pfc": shipment_data['customs_info']['eel_pfc'],
@@ -92,6 +92,7 @@ shipment = client.shipment.create(
     to_address=to_address,
     # buyer_address=buyer_address,
     from_address=from_address,
+    # return_address=return_address,
     return_address=return_address,
     parcel= {
         "length": shipment_data['parcel']['length'],
