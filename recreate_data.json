@@ -1,401 +1,140 @@
 {
-  "created_at": "2025-02-14T21:23:23Z",
+  "id": "shp_84af476fdca14e07ab4174ac5c75e001",
+  "created_at": "2025-02-19T13:35:49Z",
   "is_return": false,
   "messages": [],
   "mode": "production",
   "options": {
-    "label_format": "ZPL",
-    "delivery_confirmation": "ADULT_SIGNATURE",
-    "currency": "USD",
+    "print_custom_1_code": "PO",
+    "print_custom_1": "2-45566-1273565",
     "payment": {
-      "type": "SENDER"
+      "type": "THIRD_PARTY",
+      "account": "554151140",
+      "country": "US",
+      "postal_code": "94107"
     },
+    "duty_payment": {
+      "type": "THIRD_PARTY",
+      "account": "554151140",
+      "country": "US",
+      "postal_code": "94107"
+    },
+    "currency": "USD",
+    "print_custom": [
+      {
+        "name": "PO",
+        "value": "2-45566-1273565"
+      }
+    ],
+    "bill_third_party_account": "554151140",
+    "bill_third_party_country": "US",
+    "bill_third_party_postal_code": "94107",
     "date_advance": 0
   },
-  "reference": null,
-  "status": "in_transit",
-  "tracking_code": "285457773915",
-  "updated_at": "2025-02-17T02:55:36Z",
+  "reference": "SMSC-RO0000000000117",
+  "status": "pre_transit",
+  "tracking_code": "285589800472",
+  "updated_at": "2025-02-19T17:03:07Z",
   "batch_id": null,
   "batch_status": null,
   "batch_message": null,
-  "customs_info": null,
+  "customs_info": {
+    "id": "cstinfo_7823ec2fb1d94f3fa5aea102bb05e68b",
+    "object": "CustomsInfo",
+    "created_at": "2025-02-19T13:35:49Z",
+    "updated_at": "2025-02-19T13:35:49Z",
+    "contents_explanation": null,
+    "contents_type": "merchandise",
+    "customs_certify": true,
+    "customs_signer": "Marnu Oosthuizen",
+    "eel_pfc": "NOEEI 30.37(a)",
+    "non_delivery_option": "return",
+    "restriction_comments": null,
+    "restriction_type": "none",
+    "mode": "production",
+    "declaration": null,
+    "customs_items": [
+      {
+        "id": "cstitem_027e35e9926f4c85b80301e89ce3fe35",
+        "object": "CustomsItem",
+        "created_at": "2025-02-19T11:40:08Z",
+        "updated_at": "2025-02-19T11:40:08Z",
+        "description": "Smart Scale T80 with Casing (USA Adap / 2m cable)",
+        "hs_tariff_number": "85171200 ",
+        "origin_country": "US",
+        "quantity": 1,
+        "value": "200.0",
+        "weight": 1500,
+        "code": null,
+        "mode": "production",
+        "manufacturer": null,
+        "currency": null,
+        "eccn": null,
+        "printed_commodity_identifier": null
+      }
+    ]
+  },
   "from_address": {
-    "id": "adr_ebcfffc8eb1911efbdb7ac1f6bc539aa",
+    "id": "adr_6e9dc798eec611ef8a24ac1f6bc53342",
     "object": "Address",
-    "created_at": "2025-02-14T21:23:23+00:00",
-    "updated_at": "2025-02-14T21:23:23+00:00",
-    "name": "SM SHIPPING",
+    "created_at": "2025-02-19T13:35:49+00:00",
+    "updated_at": "2025-02-19T13:35:49+00:00",
+    "name": "Smartscale",
     "company": null,
-    "street1": "4021 E 461 N",
+    "street1": "7423 Walnut St",
     "street2": null,
-    "city": "RIGBY",
-    "state": "ID",
-    "zip": "83442-1488",
-    "country": "US",
-    "phone": "7753853880",
+    "city": "Maricao",
+    "state": null,
+    "zip": "00694",
+    "country": "PR",
+    "phone": "4158199068",
     "email": null,
     "mode": "production",
     "carrier_facility": null,
-    "residential": false,
+    "residential": null,
     "federal_tax_id": null,
     "state_tax_id": null,
-    "verifications": {
-      "zip4": {
-        "success": true,
-        "errors": [],
-        "details": null
-      },
-      "delivery": {
-        "success": true,
-        "errors": [],
-        "details": {
-          "latitude": 43.62931,
-          "longitude": -111.82507,
-          "time_zone": "America/Boise"
-        }
-      }
-    }
+    "verifications": {}
   },
   "insurance": null,
   "order_id": null,
   "parcel": {
-    "id": "prcl_256980f1328342cca8bad30f66a2bf82",
+    "id": "prcl_2bb1f1bc7014419ea91e12e9746f143e",
     "object": "Parcel",
-    "created_at": "2025-02-14T21:23:23Z",
-    "updated_at": "2025-02-14T21:23:23Z",
-    "length": null,
-    "width": null,
-    "height": null,
-    "predefined_package": "FedExEnvelope",
-    "weight": 10,
+    "created_at": "2025-02-19T13:35:49Z",
+    "updated_at": "2025-02-19T13:35:49Z",
+    "length": 7.75,
+    "width": 11.25,
+    "height": 8.75,
+    "predefined_package": null,
+    "weight": 1600,
     "mode": "production"
   },
   "postage_label": {
     "object": "PostageLabel",
-    "id": "pl_ac5b10ff038748acbfc4c9a66dc05d3b",
-    "created_at": "2025-02-14T21:23:24Z",
-    "updated_at": "2025-02-14T21:23:24Z",
+    "id": "pl_ce311a86a24e4bc9a9dc52cdb797baa1",
+    "created_at": "2025-02-19T13:35:51Z",
+    "updated_at": "2025-02-19T13:35:52Z",
     "date_advance": 0,
     "integrated_form": "none",
-    "label_date": "2025-02-14T21:23:24Z",
+    "label_date": "2025-02-19T13:35:51Z",
     "label_resolution": 200,
-    "label_size": "STOCK_4X6",
+    "label_size": "PAPER_4X6",
     "label_type": "default",
-    "label_file_type": "application/zpl",
-    "label_url": "https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20250214/e87a3fb2573ace45f2a73043ae27b2eef0.zpl",
+    "label_file_type": "image/png",
+    "label_url": "https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20250219/e8acea6e10c7e942f19f63f3bd18c6f83e.png",
     "label_pdf_url": null,
-    "label_zpl_url": "https://easypost-files.s3.us-west-2.amazonaws.com/files/postage_label/20250214/e87a3fb2573ace45f2a73043ae27b2eef0.zpl",
+    "label_zpl_url": null,
     "label_epl2_url": null,
     "label_file": null
   },
-  "refund_status": null,
-  "scan_form": null,
-  "selected_rate": {
-    "id": "rate_8ab5dba76147405c8ebcab07862a50f6",
-    "object": "Rate",
-    "created_at": "2025-02-14T21:23:24Z",
-    "updated_at": "2025-02-14T21:23:24Z",
-    "mode": "production",
-    "service": "FEDEX_2_DAY",
-    "carrier": "FedEx",
-    "rate": "9.33",
-    "currency": "USD",
-    "retail_rate": null,
-    "retail_currency": null,
-    "list_rate": null,
-    "list_currency": null,
-    "billing_type": "carrier",
-    "delivery_days": null,
-    "delivery_date": null,
-    "delivery_date_guaranteed": null,
-    "est_delivery_days": null,
-    "shipment_id": "shp_100dede156de4c1183d5bb52aefd4451",
-    "carrier_account_id": "ca_3545f3f3d9fe4010a21e10c534778b9d"
-  },
-  "tracker": {
-    "id": "trk_05c7b59f899a4504b8df935ee6cef57a",
-    "object": "Tracker",
-    "mode": "production",
-    "tracking_code": "285457773915",
-    "status": "in_transit",
-    "status_detail": "received_at_destination_facility",
-    "created_at": "2025-02-14T21:23:25Z",
-    "updated_at": "2025-02-17T20:33:39Z",
-    "signed_by": null,
-    "weight": 8,
-    "est_delivery_date": "2025-02-19T02:00:00Z",
-    "shipment_id": "shp_100dede156de4c1183d5bb52aefd4451",
-    "carrier": "FedEx",
-    "tracking_details": [
-      {
-        "object": "TrackingDetail",
-        "message": "Shipment information sent to FedEx",
-        "description": "Shipment information sent to FedEx",
-        "status": "pre_transit",
-        "status_detail": "label_created",
-        "datetime": "2025-02-14T21:23:24Z",
-        "source": "FedEx",
-        "carrier_code": "OC",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": null,
-          "state": null,
-          "country": null,
-          "zip": null
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "Picked up",
-        "description": "Picked up",
-        "status": "in_transit",
-        "status_detail": "received_at_origin_facility",
-        "datetime": "2025-02-14T21:50:00Z",
-        "source": "FedEx",
-        "carrier_code": "PU",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "IDAHO FALLS",
-          "state": "ID",
-          "country": "US",
-          "zip": "83402"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "Shipment arriving On-Time",
-        "description": "Shipment arriving On-Time",
-        "status": "in_transit",
-        "status_detail": "status_update",
-        "datetime": "2025-02-14T21:52:00Z",
-        "source": "FedEx",
-        "carrier_code": "AO",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "IDAHO FALLS",
-          "state": "ID",
-          "country": "US",
-          "zip": "83402"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "At FedEx origin facility",
-        "description": "At FedEx origin facility",
-        "status": "in_transit",
-        "status_detail": "received_at_origin_facility",
-        "datetime": "2025-02-14T23:08:00Z",
-        "source": "FedEx",
-        "carrier_code": "AR",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "IDAHO FALLS",
-          "state": "ID",
-          "country": "US",
-          "zip": "83402"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "Left FedEx origin facility",
-        "description": "Left FedEx origin facility",
-        "status": "in_transit",
-        "status_detail": "departed_origin_facility",
-        "datetime": "2025-02-15T22:44:00Z",
-        "source": "FedEx",
-        "carrier_code": "DP",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "IDAHO FALLS",
-          "state": "ID",
-          "country": "US",
-          "zip": "83402"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "Arrived at FedEx hub",
-        "description": "Arrived at FedEx hub",
-        "status": "in_transit",
-        "status_detail": "arrived_at_facility",
-        "datetime": "2025-02-16T17:08:00Z",
-        "source": "FedEx",
-        "carrier_code": "AR",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "MEMPHIS",
-          "state": "TN",
-          "country": "US",
-          "zip": "38118"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "Departed FedEx hub",
-        "description": "Departed FedEx hub",
-        "status": "in_transit",
-        "status_detail": "departed_facility",
-        "datetime": "2025-02-16T22:29:00Z",
-        "source": "FedEx",
-        "carrier_code": "DP",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "MEMPHIS",
-          "state": "TN",
-          "country": "US",
-          "zip": "38118"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "Shipment arriving On-Time",
-        "description": "Shipment arriving On-Time",
-        "status": "in_transit",
-        "status_detail": "status_update",
-        "datetime": "2025-02-16T22:31:00Z",
-        "source": "FedEx",
-        "carrier_code": "AO",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "MEMPHIS",
-          "state": "TN",
-          "country": "US",
-          "zip": "38118"
-        }
-      },
-      {
-        "object": "TrackingDetail",
-        "message": "At destination sort facility",
-        "description": "At destination sort facility",
-        "status": "in_transit",
-        "status_detail": "received_at_destination_facility",
-        "datetime": "2025-02-17T00:27:00Z",
-        "source": "FedEx",
-        "carrier_code": "AR",
-        "tracking_location": {
-          "object": "TrackingLocation",
-          "city": "MINNEAPOLIS",
-          "state": "MN",
-          "country": "US",
-          "zip": "55450"
-        }
-      }
-    ],
-    "fees": [],
-    "carrier_detail": {
-      "object": "CarrierDetail",
-      "service": "FEDEX_2_DAY",
-      "container_type": "FEDEX_ENVELOPE",
-      "est_delivery_date_local": "2025-02-18",
-      "est_delivery_time_local": "20:00:00",
-      "origin_location": "IDAHO FALLS ID US",
-      "origin_tracking_location": {
-        "object": "TrackingLocation",
-        "city": "IDAHO FALLS",
-        "state": "ID",
-        "country": "US",
-        "zip": "83402"
-      },
-      "destination_location": "Independence MN US",
-      "destination_tracking_location": null,
-      "guaranteed_delivery_date": null,
-      "alternate_identifier": null,
-      "initial_delivery_attempt": null
-    },
-    "public_url": "https://track.easypost.com/djE6dHJrXzA1YzdiNTlmODk5YTQ1MDRiOGRmOTM1ZWU2Y2VmNTdh"
-  },
-  "to_address": {
-    "id": "adr_ebc95fdaeb1911ef82a6ac1f6bc539ae",
-    "object": "Address",
-    "created_at": "2025-02-14T21:23:23+00:00",
-    "updated_at": "2025-02-14T21:23:23+00:00",
-    "name": "Jennifer McMahan",
-    "company": null,
-    "street1": "3520 County Road 90",
-    "street2": null,
-    "city": "Independence",
-    "state": "MN",
-    "zip": "55359",
-    "country": "US",
-    "phone": "16124311412",
-    "email": null,
-    "mode": "production",
-    "carrier_facility": null,
-    "residential": null,
-    "federal_tax_id": null,
-    "state_tax_id": null,
-    "verifications": {}
-  },
-  "usps_zone": 5,
-  "return_address": {
-    "id": "adr_ebcfffc8eb1911efbdb7ac1f6bc539aa",
-    "object": "Address",
-    "created_at": "2025-02-14T21:23:23+00:00",
-    "updated_at": "2025-02-14T21:23:23+00:00",
-    "name": "SM SHIPPING",
-    "company": null,
-    "street1": "4021 E 461 N",
-    "street2": null,
-    "city": "RIGBY",
-    "state": "ID",
-    "zip": "83442-1488",
-    "country": "US",
-    "phone": "7753853880",
-    "email": null,
-    "mode": "production",
-    "carrier_facility": null,
-    "residential": false,
-    "federal_tax_id": null,
-    "state_tax_id": null,
-    "verifications": {
-      "zip4": {
-        "success": true,
-        "errors": [],
-        "details": null
-      },
-      "delivery": {
-        "success": true,
-        "errors": [],
-        "details": {
-          "latitude": 43.62931,
-          "longitude": -111.82507,
-          "time_zone": "America/Boise"
-        }
-      }
-    }
-  },
-  "buyer_address": {
-    "id": "adr_ebc95fdaeb1911ef82a6ac1f6bc539ae",
-    "object": "Address",
-    "created_at": "2025-02-14T21:23:23+00:00",
-    "updated_at": "2025-02-14T21:23:23+00:00",
-    "name": "Jennifer McMahan",
-    "company": null,
-    "street1": "3520 County Road 90",
-    "street2": null,
-    "city": "Independence",
-    "state": "MN",
-    "zip": "55359",
-    "country": "US",
-    "phone": "16124311412",
-    "email": null,
-    "mode": "production",
-    "carrier_facility": null,
-    "residential": null,
-    "federal_tax_id": null,
-    "state_tax_id": null,
-    "verifications": {}
-  },
-  "object": "Shipment",
-  "id": "shp_100dede156de4c1183d5bb52aefd4451",
   "rates": [
     {
       "object": "Rate",
-      "created_at": "2025-02-14T21:23:23Z",
-      "updated_at": "2025-02-14T21:23:23Z",
+      "created_at": "2025-02-19T13:35:49Z",
+      "updated_at": "2025-02-19T13:35:49Z",
       "mode": "production",
-      "service": "FEDEX_2_DAY",
+      "service": "INTERNATIONAL_FIRST",
       "carrier": "FedEx",
       "rate": "0.01",
       "currency": "USD",
@@ -408,19 +147,202 @@
       "delivery_date": null,
       "delivery_date_guaranteed": null,
       "est_delivery_days": null,
-      "shipment_id": "shp_100dede156de4c1183d5bb52aefd4451",
-      "carrier_account_id": "ca_3545f3f3d9fe4010a21e10c534778b9d",
-      "id": "rate_8ab5dba76147405c8ebcab07862a50f6"
+      "shipment_id": "shp_84af476fdca14e07ab4174ac5c75e001",
+      "carrier_account_id": "ca_8d13744066c34015a6854a803a2e3a33",
+      "id": "rate_878a6bb49bf64ea7b985dc2a25558e60"
     }
   ],
-  "forms": [],
+  "refund_status": null,
+  "scan_form": null,
+  "selected_rate": {
+    "id": "rate_878a6bb49bf64ea7b985dc2a25558e60",
+    "object": "Rate",
+    "created_at": "2025-02-19T13:35:51Z",
+    "updated_at": "2025-02-19T13:35:51Z",
+    "mode": "production",
+    "service": "INTERNATIONAL_FIRST",
+    "carrier": "FedEx",
+    "rate": "0.01",
+    "currency": "USD",
+    "retail_rate": null,
+    "retail_currency": null,
+    "list_rate": null,
+    "list_currency": null,
+    "billing_type": "carrier",
+    "delivery_days": null,
+    "delivery_date": null,
+    "delivery_date_guaranteed": null,
+    "est_delivery_days": null,
+    "shipment_id": "shp_84af476fdca14e07ab4174ac5c75e001",
+    "carrier_account_id": "ca_8d13744066c34015a6854a803a2e3a33"
+  },
+  "tracker": {
+    "id": "trk_f147ff75fa074fe6a288c52f236731ba",
+    "object": "Tracker",
+    "mode": "production",
+    "tracking_code": "285589800472",
+    "status": "pre_transit",
+    "status_detail": "label_created",
+    "created_at": "2025-02-19T13:35:52Z",
+    "updated_at": "2025-02-19T17:01:20Z",
+    "signed_by": null,
+    "weight": 1601.5,
+    "est_delivery_date": null,
+    "shipment_id": "shp_84af476fdca14e07ab4174ac5c75e001",
+    "carrier": "FedEx",
+    "tracking_details": [
+      {
+        "object": "TrackingDetail",
+        "message": "Shipment information sent to FedEx",
+        "description": "Shipment information sent to FedEx",
+        "status": "pre_transit",
+        "status_detail": "label_created",
+        "datetime": "2025-02-19T13:35:51Z",
+        "source": "FedEx",
+        "carrier_code": "OC",
+        "tracking_location": {
+          "object": "TrackingLocation",
+          "city": null,
+          "state": null,
+          "country": null,
+          "zip": null
+        }
+      }
+    ],
+    "fees": [],
+    "carrier_detail": {
+      "object": "CarrierDetail",
+      "service": "INTERNATIONAL_FIRST",
+      "container_type": "YOUR_PACKAGING",
+      "est_delivery_date_local": null,
+      "est_delivery_time_local": null,
+      "origin_location": "GUAYNABO PR US",
+      "origin_tracking_location": null,
+      "destination_location": "HOLLYWOOD FL US",
+      "destination_tracking_location": null,
+      "guaranteed_delivery_date": null,
+      "alternate_identifier": null,
+      "initial_delivery_attempt": null
+    },
+    "public_url": "https://track.easypost.com/djE6dHJrX2YxNDdmZjc1ZmEwNzRmZTZhMjg4YzUyZjIzNjczMWJh"
+  },
+  "to_address": {
+    "id": "adr_6e9bbf1deec611ef9e3eac1f6bc539aa",
+    "object": "Address",
+    "created_at": "2025-02-19T13:35:49+00:00",
+    "updated_at": "2025-02-19T13:35:49+00:00",
+    "name": "MATTHEW DE GRAZIA",
+    "company": "SMF HQ RETURNS",
+    "street1": "2057 COOLIDGE ST",
+    "street2": null,
+    "city": "HOLLYWOOD",
+    "state": "FL",
+    "zip": "33020-2427",
+    "country": "US",
+    "phone": "3059016400",
+    "email": "ESLOGISTICS@SOCIALMOBILE.COM",
+    "mode": "production",
+    "carrier_facility": null,
+    "residential": false,
+    "federal_tax_id": null,
+    "state_tax_id": null,
+    "verifications": {
+      "zip4": {
+        "success": true,
+        "errors": [],
+        "details": null
+      },
+      "delivery": {
+        "success": true,
+        "errors": [],
+        "details": {
+          "latitude": 26.0289,
+          "longitude": -80.14858,
+          "time_zone": "America/New_York"
+        }
+      }
+    }
+  },
+  "usps_zone": 6,
+  "return_address": {
+    "id": "adr_6e9dc798eec611ef8a24ac1f6bc53342",
+    "object": "Address",
+    "created_at": "2025-02-19T13:35:49+00:00",
+    "updated_at": "2025-02-19T13:35:49+00:00",
+    "name": "Smartscale",
+    "company": null,
+    "street1": "7423 Walnut St",
+    "street2": null,
+    "city": "Maricao",
+    "state": null,
+    "zip": "00694",
+    "country": "PR",
+    "phone": "4158199068",
+    "email": null,
+    "mode": "production",
+    "carrier_facility": null,
+    "residential": null,
+    "federal_tax_id": null,
+    "state_tax_id": null,
+    "verifications": {}
+  },
+  "buyer_address": {
+    "id": "adr_6e9bbf1deec611ef9e3eac1f6bc539aa",
+    "object": "Address",
+    "created_at": "2025-02-19T13:35:49+00:00",
+    "updated_at": "2025-02-19T13:35:49+00:00",
+    "name": "MATTHEW DE GRAZIA",
+    "company": "SMF HQ RETURNS",
+    "street1": "2057 COOLIDGE ST",
+    "street2": null,
+    "city": "HOLLYWOOD",
+    "state": "FL",
+    "zip": "33020-2427",
+    "country": "US",
+    "phone": "3059016400",
+    "email": "ESLOGISTICS@SOCIALMOBILE.COM",
+    "mode": "production",
+    "carrier_facility": null,
+    "residential": false,
+    "federal_tax_id": null,
+    "state_tax_id": null,
+    "verifications": {
+      "zip4": {
+        "success": true,
+        "errors": [],
+        "details": null
+      },
+      "delivery": {
+        "success": true,
+        "errors": [],
+        "details": {
+          "latitude": 26.0289,
+          "longitude": -80.14858,
+          "time_zone": "America/New_York"
+        }
+      }
+    }
+  },
+  "forms": [
+    {
+      "object": "Form",
+      "created_at": "2025-02-19T13:35:52Z",
+      "updated_at": "2025-02-19T13:35:52Z",
+      "mode": "production",
+      "form_type": "commercial_invoice",
+      "form_url": "https://easypost-files.s3-us-west-2.amazonaws.com/files/form/20250219/a054f3ae03484b489b7ec39a2250582f.pdf",
+      "submitted_electronically": true,
+      "id": "form_0fdc530ccf6b45c1ac55681b4bb23185"
+    }
+  ],
   "fees": [
     {
       "object": "Fee",
       "type": "LabelFee",
-      "amount": "0.00000",
+      "amount": "0.05000",
       "charged": true,
       "refunded": false
     }
-  ]
+  ],
+  "object": "Shipment"
 }

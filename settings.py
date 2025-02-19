@@ -5,7 +5,7 @@ load_dotenv()
 EASYPOST_PRODUCTION_KEY = os.getenv('EASYPOST_PRODUCTION_KEY')
 EASYPOST_TEST_KEY = os.getenv('EASYPOST_TEST_KEY')
 PERSONAL_PRODUCTION_KEY = os.getenv('PERONSAL_PRODUCTION_KEY')
-ENVIRONMENT = "personal"
+ENVIRONMENT = "production"
 
 carriers = {
     "AUSTRALIA_POST": os.getenv("AUSTRALIA_POST"),

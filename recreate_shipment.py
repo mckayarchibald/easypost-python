@@ -62,29 +62,28 @@ return_address = {
 }
 
 # CUSTOMS INFORMATION:
-# customs_info = {
-#     "eel_pfc": shipment_data['customs_info']['eel_pfc'],
-#     "customs_certify": shipment_data['customs_info']['customs_certify'],
-#     "customs_signer": shipment_data['customs_info']['customs_signer'],
-#     "contents_type": shipment_data['customs_info']['contents_type'],
-#     "contents_explanation": shipment_data['customs_info']['contents_explanation'],
-#     "restriction_type": shipment_data['customs_info']['restriction_type'],
-#     "restriction_comments": shipment_data['customs_info']['restriction_comments'],
-#     "non_delivery_option": shipment_data['customs_info']['non_delivery_option'],
-#     # The customs items need to be dynamically imported
-#     "customs_items": [
-#         {
-#             "description": shipment_data['customs_info']['customs_items'][0]['description'],
-#             "quantity": shipment_data['customs_info']['customs_items'][0]['quantity'],
-#             "weight": shipment_data['customs_info']['customs_items'][0]['weight'],
-#             "value": 0.01,
-#             "hs_tariff_number": shipment_data['customs_info']['customs_items'][0]['hs_tariff_number'],
-#             "origin_country": shipment_data['customs_info']['customs_items'][0]['origin_country'],
-#             "code": shipment_data['customs_info']['customs_items'][0]['code'],
-#             # "currency": shipment_data['customs_info']['customs_items'][0]['currency'],
-#         },
-#     ],
-# }
+
+# Copy all customs items
+customs_items = shipment_data['customs_info']['customs_items']
+# Delete unessecary keys in each customs item
+for customs_item in customs_items:
+    del customs_item['id']
+    del customs_item['object']
+    del customs_item['created_at']
+    del customs_item['updated_at']
+
+
+customs_info = {
+    "eel_pfc": shipment_data['customs_info']['eel_pfc'],
+    "customs_certify": shipment_data['customs_info']['customs_certify'],
+    "customs_signer": shipment_data['customs_info']['customs_signer'],
+    "contents_type": shipment_data['customs_info']['contents_type'],
+    "contents_explanation": shipment_data['customs_info']['contents_explanation'],
+    "restriction_type": shipment_data['customs_info']['restriction_type'],
+    "restriction_comments": shipment_data['customs_info']['restriction_comments'],
+    "non_delivery_option": shipment_data['customs_info']['non_delivery_option'],
+    "customs_items": customs_items
+}
 
 
 # CREATE SHIPMENT ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -101,24 +100,28 @@ shipment = client.shipment.create(
         "weight": shipment_data['parcel']['weight'],
         "predefined_package": shipment_data['parcel']['predefined_package'],
     },
-    # customs_info=customs_info,
-    options=shipment_data['options'],
+    customs_info=customs_info,
+    options={
+        **shipment_data['options'],
+        "label_format": "ZPL",
+        "label_size": "4x6"
+    },
     carrier_accounts=[settings.carriers['FEDEX']],
-    service="FEDEX_2_DAY",
+    # service="FEDEX_2_DAY",
 )
 
-print(shipment.id)
+print("The shipment was successfully created: ", shipment.id)
 
 # SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # LOWEST RATE:
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate()
-#     )
-#     print(bought_shipment.id)
-# except Exception as error:
-#   print("...uh oh: ", error) 
+try:
+    bought_shipment = client.shipment.buy(
+        shipment.id,
+        rate=shipment.lowest_rate()
+    )
+    print("The shipment was successfully purchased: ", bought_shipment.id)
+except Exception as error:
+  print("...uh oh. The purchase request failed: ", error) 
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:

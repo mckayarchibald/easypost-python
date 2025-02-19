@@ -38,10 +38,10 @@ custom_sender_address = {
       "phone": "9999999999"
 }
 
-destination = california_address
-buyer = california_address
-origin = utah_address
-return_destination = utah_address
+destination = france_address
+buyer = france_address
+origin = germany_address
+return_destination = germany_address
 
 
 to_address = {
@@ -68,15 +68,16 @@ buyer_address = {
 }
 
 from_address = {
-    "name": "McKay Archibald",
+    "name": "Grainger",
+    "company": "C/O Vendor Company Name",
     "street1": origin['street1'],
     "street2": origin['street2'],
     "city": origin['city'],
     "state": origin['state'],
     "zip": origin['zip'],
     "country": origin['country'],
-    "phone": "415-456-7890",
-    "email": "mckay@example.com"
+    "phone": "1111111111",
+    "email": ""
 }
 
 return_address = {
@@ -92,7 +93,7 @@ return_address = {
 
 # CUSTOMS INFORMATION:
 customs_info = {
-    "eel_pfc": "NOEEI 30.37(a)",
+    # "eel_pfc": "NOEEI 30.37(a)",
     "customs_certify": True,
     "customs_signer": "Steve Brule",
     "contents_type": "merchandise",
@@ -103,7 +104,7 @@ customs_info = {
     "customs_items": [
         {
             "description": "Sweat shirts",
-            "quantity": 2,
+            "quantity": 1,
             "weight": 5,
             "value": 23,
             "hs_tariff_number": "654321",
@@ -124,11 +125,17 @@ try:
             "length": 12,
             "width": 5,
             "height": 5,
-            "weight": 1,
+            "weight": 5,
             # "predefined_package": "Letter",
         },
-        # customs_info = customs_info,
+        customs_info = customs_info,
         options = {
+           "print_custom_1": "print custom 1",
+           "print_custom_2": "print custom 2",
+           "print_custom_2_code": "PO",
+           "print_custom_3": "print custom 3",
+           "print_custom_3_code": "DP",
+           "invoice_number": "invoice number"
         },
         carrier_accounts = [settings.carriers['FEDEX']],
         # service = "Priority",
