@@ -8,7 +8,9 @@ PERSONAL_PRODUCTION_KEY = os.getenv('PERONSAL_PRODUCTION_KEY')
 ENVIRONMENT = "production"
 
 carriers = {
+    "ASENDIA": os.getenv("ASENDIA"),
     "AUSTRALIA_POST": os.getenv("AUSTRALIA_POST"),
+    "CANADA_POST": os.getenv("CANADA_POST"),
     "DHL_EXPRESS": os.getenv("DHL_EXPRESS"),
     "DHL_PAKET": os.getenv("DHL_PAKET"),
     "DOORDASH": os.getenv("DOORDASH"),
@@ -17,6 +19,7 @@ carriers = {
     "FEDEX_DEFAULT": os.getenv("FEDEX_DEFAULT"),
     "FEDEX_MAILVIEW": os.getenv("FEDEX_MAILVIEW"),
     "LASERSHIP": os.getenv("LASERSHIP"),
+    "PUROLATOR": os.getenv("PUROLATOR"),
     "UPS": os.getenv("UPS"),
     "UPS_MAILINNOVATIONS": os.getenv("UPS_MAILINNOVATIONS"),
     "USPS": os.getenv("USPS"),

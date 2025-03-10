@@ -9,13 +9,6 @@ if settings.ENVIRONMENT == "production":
 
 # SHIPMENT PARAMETERS ////////////////////////////////////////////////////////////////////////////////////////////////////
 # ADDRESSES:
-australia_address_1 = dad_tool.random_address('AU_VT')
-australia_address_2 = dad_tool.random_address('AU_VT')
-california_address = dad_tool.random_address('US_CA')
-canada_address = dad_tool.random_address('CA_BC')
-france_address = dad_tool.random_address('EU_FR')
-germany_address = dad_tool.random_address('EU_DE')
-utah_address = dad_tool.random_address('US_UT')
 
 custom_recepient_address = {
       "name": "Amanda Miller",
@@ -38,10 +31,21 @@ custom_sender_address = {
       "phone": "9999999999"
 }
 
-destination = france_address
-buyer = france_address
-origin = germany_address
-return_destination = germany_address
+# DOMESTIC: 
+california_address = dad_tool.random_address('US_CA')
+texas_address = dad_tool.random_address('US_TX')
+utah_address = dad_tool.random_address('US_UT')
+
+# INTERNATIONAL: 
+australia_address_1 = dad_tool.random_address('AU_VT')
+australia_address_2 = dad_tool.random_address('AU_VT')
+canada_address = dad_tool.random_address('CA_BC')
+france_address = dad_tool.random_address('EU_FR')
+
+destination = california_address
+buyer = california_address
+origin = utah_address
+return_destination = utah_address
 
 
 to_address = {
@@ -93,10 +97,10 @@ return_address = {
 
 # CUSTOMS INFORMATION:
 customs_info = {
-    # "eel_pfc": "NOEEI 30.37(a)",
+    "eel_pfc": "NOEEI 30.37(a)",
     "customs_certify": True,
     "customs_signer": "Steve Brule",
-    "contents_type": "merchandise",
+    "contents_type": "dangerous_goods",
     "contents_explanation": "this is the general notes section",
     "restriction_type": "none",
     "restriction_comments": '',
@@ -125,19 +129,20 @@ try:
             "length": 12,
             "width": 5,
             "height": 5,
-            "weight": 5,
-            # "predefined_package": "Letter",
+            "weight": 200,
+            # "predefined_package": "MediumExpressBox",
         },
-        customs_info = customs_info,
+        # customs_info = customs_info,
         options = {
-           "print_custom_1": "print custom 1",
-           "print_custom_2": "print custom 2",
-           "print_custom_2_code": "PO",
-           "print_custom_3": "print custom 3",
-           "print_custom_3_code": "DP",
-           "invoice_number": "invoice number"
+        #    "print_custom_1": "1234567890",
+        #    "print_custom_2": "print custom 2",
+        #    "print_custom_2_code": "PO",
+        #    "print_custom_3": "print custom 3",
+        #    "print_custom_3_code": "DP",
+        #    "invoice_number": "invoice number"
+            # "currency": "EUR"
         },
-        carrier_accounts = [settings.carriers['FEDEX']],
+        carrier_accounts = [settings.carriers['FEDEX_DEFAULT']],
         # service = "Priority",
     )   
 

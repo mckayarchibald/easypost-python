@@ -63,36 +63,36 @@ return_address = {
 
 # CUSTOMS INFORMATION:
 
-# Copy all customs items
-customs_items = shipment_data['customs_info']['customs_items']
-# Delete the unessecary keys in each customs item
-for customs_item in customs_items:
-    del customs_item['id']
-    del customs_item['object']
-    del customs_item['created_at']
-    del customs_item['updated_at']
-    del customs_item['mode']
+if shipment_data['customs_info'] is not None:
 
-customs_info = {
-    "eel_pfc": shipment_data['customs_info']['eel_pfc'],
-    "customs_certify": shipment_data['customs_info']['customs_certify'],
-    "customs_signer": shipment_data['customs_info']['customs_signer'],
-    "contents_type": shipment_data['customs_info']['contents_type'],
-    "contents_explanation": shipment_data['customs_info']['contents_explanation'],
-    "restriction_type": shipment_data['customs_info']['restriction_type'],
-    "restriction_comments": shipment_data['customs_info']['restriction_comments'],
-    "non_delivery_option": shipment_data['customs_info']['non_delivery_option'],
-    "customs_items": customs_items
-}
+    customs_items = shipment_data['customs_info']['customs_items']
+
+    for customs_item in customs_items:
+        del customs_item['id']
+        del customs_item['object']
+        del customs_item['created_at']
+        del customs_item['updated_at']
+        del customs_item['mode']
+
+    customs_info = {
+        "eel_pfc": shipment_data['customs_info']['eel_pfc'],
+        "customs_certify": shipment_data['customs_info']['customs_certify'],
+        "customs_signer": shipment_data['customs_info']['customs_signer'],
+        "contents_type": shipment_data['customs_info']['contents_type'],
+        "contents_explanation": shipment_data['customs_info']['contents_explanation'],
+        "restriction_type": shipment_data['customs_info']['restriction_type'],
+        "restriction_comments": shipment_data['customs_info']['restriction_comments'],
+        "non_delivery_option": shipment_data['customs_info']['non_delivery_option'],
+        "customs_items": customs_items
+    }
 
 
 # CREATE SHIPMENT ////////////////////////////////////////////////////////////////////////////////////////////////////////
 shipment = client.shipment.create(
     is_return=shipment_data.get('is_return', False),
     to_address=to_address,
-    # buyer_address=buyer_address,
+    buyer_address=buyer_address,
     from_address=from_address,
-    # return_address=return_address,
     return_address=return_address,
     parcel= {
         "length": shipment_data['parcel']['length'],
@@ -101,13 +101,13 @@ shipment = client.shipment.create(
         "weight": shipment_data['parcel']['weight'],
         "predefined_package": shipment_data['parcel']['predefined_package'],
     },
-    customs_info=customs_info,
+    # customs_info=customs_info,
     options={
         **shipment_data['options'],
-        "label_format": "ZPL",
-        "label_size": "4x6"
+        # "import_control": "PRINT",
+        # "import_control_description": "DESCRIPTION_HERE",
     },
-    carrier_accounts=[settings.carriers['FEDEX']],
+    carrier_accounts=[settings.carriers['CANADA_POST']],
     # service="FEDEX_2_DAY",
 )
 
@@ -128,7 +128,7 @@ except Exception as error:
 # try:
 #     bought_shipment = client.shipment.buy(
 #         shipment.id,
-#         rate=shipment.lowest_rate(["USPS"], ["PriorityMailInternational"])
+#         rate=shipment.lowest_rate(["UPS"], ["UPSStandard"])
 #     )
 #     print(bought_shipment.id)
 # except Exception as error:
