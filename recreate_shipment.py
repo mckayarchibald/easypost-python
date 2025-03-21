@@ -91,9 +91,9 @@ if shipment_data['customs_info'] is not None:
 shipment = client.shipment.create(
     is_return=shipment_data.get('is_return', False),
     to_address=to_address,
-    buyer_address=buyer_address,
+    # buyer_address=buyer_address,
     from_address=from_address,
-    return_address=return_address,
+    # return_address=return_address,
     parcel= {
         "length": shipment_data['parcel']['length'],
         "width": shipment_data['parcel']['width'],
@@ -104,10 +104,12 @@ shipment = client.shipment.create(
     # customs_info=customs_info,
     options={
         **shipment_data['options'],
-        # "import_control": "PRINT",
-        # "import_control_description": "DESCRIPTION_HERE",
+        # "print_custom_1": "print custom 1",
+        # "print_custom_2": "print custom 2",
+        # "print_custom_3": "print custom 3",
+        # "invoice_number": "invoice number"
     },
-    carrier_accounts=[settings.carriers['CANADA_POST']],
+    carrier_accounts=[settings.carriers['FEDEX']],
     # service="FEDEX_2_DAY",
 )
 
@@ -130,6 +132,6 @@ except Exception as error:
 #         shipment.id,
 #         rate=shipment.lowest_rate(["UPS"], ["UPSStandard"])
 #     )
-#     print(bought_shipment.id)
+#     print("The shipment was successfully purchased: ", bought_shipment.id)
 # except Exception as error:
-#      print("...uh oh: ", error) 
+#      print("...uh oh. The purchase request failed: ", error) 

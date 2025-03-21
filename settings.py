@@ -5,7 +5,7 @@ load_dotenv()
 EASYPOST_PRODUCTION_KEY = os.getenv('EASYPOST_PRODUCTION_KEY')
 EASYPOST_TEST_KEY = os.getenv('EASYPOST_TEST_KEY')
 PERSONAL_PRODUCTION_KEY = os.getenv('PERONSAL_PRODUCTION_KEY')
-ENVIRONMENT = "production"
+ENVIRONMENT = "test"
 
 carriers = {
     "ASENDIA": os.getenv("ASENDIA"),
@@ -20,6 +20,7 @@ carriers = {
     "FEDEX_MAILVIEW": os.getenv("FEDEX_MAILVIEW"),
     "LASERSHIP": os.getenv("LASERSHIP"),
     "PUROLATOR": os.getenv("PUROLATOR"),
+    "ROYAL_MAIL": os.getenv("ROYAL_MAIL"),
     "UPS": os.getenv("UPS"),
     "UPS_MAILINNOVATIONS": os.getenv("UPS_MAILINNOVATIONS"),
     "USPS": os.getenv("USPS"),

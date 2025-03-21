@@ -126,23 +126,23 @@ try:
         # return_address = return_address,
         # buyer_address = buyer_address,
         parcel = {
-            "length": 12,
-            "width": 5,
-            "height": 5,
-            "weight": 200,
-            # "predefined_package": "MediumExpressBox",
+            # "length": 12,
+            # "width": 5,
+            # "height": 5,
+            "weight": 3,
+            "predefined_package": "Letter",
         },
         # customs_info = customs_info,
         options = {
-        #    "print_custom_1": "1234567890",
-        #    "print_custom_2": "print custom 2",
+           "print_custom_1": "1234567890",
+           "print_custom_2": "print custom 2",
         #    "print_custom_2_code": "PO",
-        #    "print_custom_3": "print custom 3",
+           "print_custom_3": "print custom 3",
         #    "print_custom_3_code": "DP",
-        #    "invoice_number": "invoice number"
+           "invoice_number": "invoice number"
             # "currency": "EUR"
         },
-        carrier_accounts = [settings.carriers['FEDEX_DEFAULT']],
+        carrier_accounts = [settings.carriers['FEDEX']],
         # service = "Priority",
     )   
 
