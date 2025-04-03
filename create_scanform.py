@@ -26,9 +26,9 @@ try:
         if scanform.status == "failed":
             print("There was an error in creating the scanform:\n", scanform.message)
             break
-    
+
     if scanform.status == "created":
         print(f"The current scanform status is '{scanform.status}'")
 
 except Exception as error:
-  print("...uh oh: ", error) 
+    print("...uh oh: ", error)

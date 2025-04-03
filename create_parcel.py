@@ -9,14 +9,9 @@ if settings.ENVIRONMENT == "production":
 
 
 try:
-    parcel = client.parcel.create(
-        length=150,
-        width=100,
-        height=100,
-        weight=0.1
-    ) 
+    parcel = client.parcel.create(length=150, width=100, height=100, weight=0.1)
 
     print(parcel)
 
 except Exception as error:
-  print("...uh oh: ", error) 
+    print("...uh oh: ", error)

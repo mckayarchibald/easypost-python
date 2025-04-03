@@ -8,15 +8,16 @@ if settings.ENVIRONMENT == "production":
 
 try:
     address = client.address.create(
-        street1="10 Persiaran KLCC Level 33",
-        street2="",
-        city="Kuala Lumpur",
-        state="",
-        zip="50088",
-        country="MY",
+        street1="865 Pomeroy Avenue",
+        street2="APT 320 B",
+        city="Santa Clara",
+        state="CA",
+        zip="95051",
+        country="US",
         company="",
-        name="SM Nasarudin",
-        phone="60192887878",
+        name="Rachel Sales",
+        phone="6509063463",
+        email="pizza_buddy@yahoo.com",
         verify=True
     ) 
 

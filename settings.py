@@ -1,13 +1,15 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
-EASYPOST_PRODUCTION_KEY = os.getenv('EASYPOST_PRODUCTION_KEY')
-EASYPOST_TEST_KEY = os.getenv('EASYPOST_TEST_KEY')
-PERSONAL_PRODUCTION_KEY = os.getenv('PERONSAL_PRODUCTION_KEY')
+EASYPOST_PRODUCTION_KEY = os.getenv("EASYPOST_PRODUCTION_KEY")
+EASYPOST_TEST_KEY = os.getenv("EASYPOST_TEST_KEY")
+PERSONAL_PRODUCTION_KEY = os.getenv("PERONSAL_PRODUCTION_KEY")
 ENVIRONMENT = "test"
 
 carriers = {
+    "AMAZON": os.getenv("AMAZON"),
     "ASENDIA": os.getenv("ASENDIA"),
     "AUSTRALIA_POST": os.getenv("AUSTRALIA_POST"),
     "CANADA_POST": os.getenv("CANADA_POST"),
