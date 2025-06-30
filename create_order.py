@@ -12,8 +12,8 @@ utah_address = dad_tool.random_address("US_UT")
 california_address = dad_tool.random_address("US_CA")
 canada_address = dad_tool.random_address("CA_BC")
 
-destination = canada_address
-buyer = canada_address
+destination = california_address
+buyer = california_address
 origin = utah_address
 return_destination = utah_address
 
@@ -93,84 +93,21 @@ try:
                     # "predefined_package": "FedExBox",
                     "weight": 30,
                 },
-                "customs_info": customs_info,
+                # "customs_info": customs_info,
             },
             {
                 "parcel": {
                     # "predefined_package": "FedExBox",
                     "weight": 30,
                 },
-                "customs_info": customs_info,
+                # "customs_info": customs_info,
             },
             {
                 "parcel": {
                     # "predefined_package": "FedExBox",
                     "weight": 30,
                 },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
-            },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                "customs_info": customs_info,
+                # "customs_info": customs_info,
             },
         ],
     )
@@ -179,9 +116,7 @@ except:
 
 # BUY SPECIFIC CARRIER AND SERVICE:
 try:
-    bought_order = client.order.buy(
-        order.id, carrier="FedEx", service="INTERNATIONAL_ECONOMY"
-    )
+    bought_order = client.order.buy(order.id, carrier="UPS", service="GROUND")
     print(bought_order)
 except:
     print("It did not work")

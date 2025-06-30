@@ -8,20 +8,20 @@ if settings.ENVIRONMENT == "production":
 
 try:
     address = client.address.create(
-        street1="865 Pomeroy Avenue",
-        street2="APT 320 B",
-        city="Santa Clara",
-        state="CA",
-        zip="95051",
+        street1="47 West 13th Street Unit 2",
+        street2="",
+        city="New York",
+        state="NY",
+        zip="10011",
         country="US",
         company="",
-        name="Rachel Sales",
-        phone="6509063463",
-        email="pizza_buddy@yahoo.com",
-        verify=True
-    ) 
+        name="Sofja Akimova",
+        phone="",
+        email="",
+        verify=True,
+    )
 
     print(address)
 
 except Exception as error:
-  print("...uh oh: ", error) 
+    print("...uh oh: ", error)

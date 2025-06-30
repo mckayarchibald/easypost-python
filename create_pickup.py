@@ -9,7 +9,7 @@ if settings.ENVIRONMENT == "production":
 
 pickup = client.pickup.create(
     address={"id": "adr_..."},
-    shipment={"id": "shp_..."},
+    shipment={"id": "shp_416745b846bc479b87e325d0872c74ec"},
     reference="my-first-pickup",
     min_datetime="2022-10-01 10:30:00",
     max_datetime="2022-10-02 10:30:00",

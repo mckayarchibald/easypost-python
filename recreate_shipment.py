@@ -23,6 +23,7 @@ to_address = {
     "zip": shipment_data["to_address"]["zip"],
     "country": shipment_data["to_address"]["country"],
     "phone": shipment_data["to_address"]["phone"],
+    "email": shipment_data["to_address"]["email"],
 }
 
 buyer_address = {
@@ -35,6 +36,7 @@ buyer_address = {
     "zip": shipment_data["buyer_address"]["zip"],
     "country": shipment_data["buyer_address"]["country"],
     "phone": shipment_data["buyer_address"]["phone"],
+    "email": shipment_data["buyer_address"]["email"],
 }
 
 from_address = {
@@ -47,6 +49,7 @@ from_address = {
     "zip": shipment_data["from_address"]["zip"],
     "country": shipment_data["from_address"]["country"],
     "phone": shipment_data["from_address"]["phone"],
+    "email": shipment_data["from_address"]["email"],
 }
 
 return_address = {
@@ -59,6 +62,7 @@ return_address = {
     "zip": shipment_data["return_address"]["zip"],
     "country": shipment_data["return_address"]["country"],
     "phone": shipment_data["return_address"]["phone"],
+    "email": shipment_data["return_address"]["email"],
 }
 
 # CUSTOMS INFORMATION:
@@ -89,7 +93,7 @@ if shipment_data["customs_info"] is not None:
 
 # CREATE SHIPMENT ////////////////////////////////////////////////////////////////////////////////////////////////////////
 shipment = client.shipment.create(
-    is_return=shipment_data.get("is_return", False),
+    # is_return=shipment_data.get("is_return", False),
     to_address=to_address,
     # buyer_address=buyer_address,
     from_address=from_address,
@@ -104,13 +108,12 @@ shipment = client.shipment.create(
     # customs_info=customs_info,
     options={
         **shipment_data["options"],
-        "label_layout": "LEFT",
         # "print_custom_1": "print custom 1",
         # "print_custom_2": "print custom 2",
         # "print_custom_3": "print custom 3",
         # "invoice_number": "invoice number"
     },
-    carrier_accounts=[settings.carriers["PUROLATOR"]],
+    # carrier_accounts=[settings.carriers["CANADA_POST"]],
     # service="FEDEX_2_DAY",
 )
 
@@ -118,18 +121,18 @@ print("The shipment was successfully created: ", shipment.id)
 
 # SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # LOWEST RATE:
+# try:
+#     bought_shipment = client.shipment.buy(shipment.id, rate=shipment.lowest_rate())
+#     print("The shipment was successfully purchased: ", bought_shipment.id)
+# except Exception as error:
+#     print("...uh oh. The purchase request failed: ", error)
+
+# SPECIFIC CARRIER AND SERVICE:
 try:
-    bought_shipment = client.shipment.buy(shipment.id, rate=shipment.lowest_rate())
+    bought_shipment = client.shipment.buy(
+        shipment.id,
+        rate=shipment.lowest_rate(["CanadaPost"], ["ExpeditedParcel"]),
+    )
     print("The shipment was successfully purchased: ", bought_shipment.id)
 except Exception as error:
     print("...uh oh. The purchase request failed: ", error)
-
-# SPECIFIC CARRIER AND SERVICE:
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate(["UPS"], ["UPSStandard"])
-#     )
-#     print("The shipment was successfully purchased: ", bought_shipment.id)
-# except Exception as error:
-#      print("...uh oh. The purchase request failed: ", error)

@@ -93,11 +93,11 @@ print("The order was successfully created: ", order.id)
 
 # ORDER BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # LOWEST RATE:
-try:
-    bought_order = client.order.buy(order.id, rate=order.lowest_rate())
-    print("The order was successfully purchased: ", bought_order.id)
-except Exception as error:
-    print("...uh oh. The purchase request failed: ", error)
+# try:
+#     bought_order = client.order.buy(order.id, rate=order.lowest_rate())
+#     print("The order was successfully purchased: ", bought_order.id)
+# except Exception as error:
+#     print("...uh oh. The purchase request failed: ", error)
 
 # SPECIFIC CARRIER AND SERVICE:
 # try:
