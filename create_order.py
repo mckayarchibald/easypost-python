@@ -11,9 +11,11 @@ if settings.ENVIRONMENT == "production":
 utah_address = dad_tool.random_address("US_UT")
 california_address = dad_tool.random_address("US_CA")
 canada_address = dad_tool.random_address("CA_BC")
+france_address = dad_tool.random_address("EU_FR")
+texas_address = dad_tool.random_address("US_TX")
 
-destination = california_address
-buyer = california_address
+destination = texas_address
+buyer = texas_address
 origin = utah_address
 return_destination = utah_address
 
@@ -83,40 +85,60 @@ customs_info = {
         },
     ],
 }
+
+customs_info_2 = {
+    "eel_pfc": "NOEEI 30.37(a)",
+    "customs_certify": True,
+    "customs_signer": "Steve Brule",
+    "contents_type": "merchandise",
+    "contents_explanation": "this is the general notes section",
+    "restriction_type": "none",
+    "restriction_comments": "",
+    "non_delivery_option": "return",
+    "customs_items": [
+        {
+            "description": "Sweet shirts",
+            "quantity": 1,
+            "weight": 5,
+            "value": 1000,
+            "hs_tariff_number": "654321",
+            "origin_country": "US",
+            "code": "1234",
+        },
+    ],
+}
 try:
     order = client.order.create(
         to_address=to_address,
         from_address=from_address,
+        is_return=False,
+        # insurance="100",
         shipments=[
             {
                 "parcel": {
                     # "predefined_package": "FedExBox",
                     "weight": 30,
                 },
-                # "customs_info": customs_info,
             },
             {
                 "parcel": {
                     # "predefined_package": "FedExBox",
                     "weight": 30,
                 },
-                # "customs_info": customs_info,
             },
-            {
-                "parcel": {
-                    # "predefined_package": "FedExBox",
-                    "weight": 30,
-                },
-                # "customs_info": customs_info,
-            },
+        ],
+        carrier_accounts=[
+            settings.carriers["FEDEX"],
         ],
     )
 except:
     print("...uh oh")
 
+print(order.id)
+
 # BUY SPECIFIC CARRIER AND SERVICE:
 try:
-    bought_order = client.order.buy(order.id, carrier="UPS", service="GROUND")
-    print(bought_order)
+    bought_order = client.order.buy(order.id, carrier="FedEx", service="FEDEX_GROUND")
+    print(bought_order.id)
 except:
     print("It did not work")

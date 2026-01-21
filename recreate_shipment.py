@@ -6,6 +6,8 @@ if settings.ENVIRONMENT == "test":
     client = easypost.EasyPostClient(settings.EASYPOST_TEST_KEY)
 if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
+if settings.ENVIRONMENT == "personal":
+    client = easypost.EasyPostClient(settings.PERSONAL_PRODUCTION_KEY)
 
 with open("recreate_data.json") as recreate_data:
     shipment_data = json.load(recreate_data)
@@ -24,6 +26,7 @@ to_address = {
     "country": shipment_data["to_address"]["country"],
     "phone": shipment_data["to_address"]["phone"],
     "email": shipment_data["to_address"]["email"],
+    "federal_tax_id": shipment_data["from_address"]["federal_tax_id"],
 }
 
 buyer_address = {
@@ -37,6 +40,7 @@ buyer_address = {
     "country": shipment_data["buyer_address"]["country"],
     "phone": shipment_data["buyer_address"]["phone"],
     "email": shipment_data["buyer_address"]["email"],
+    "federal_tax_id": shipment_data["from_address"]["federal_tax_id"],
 }
 
 from_address = {
@@ -50,6 +54,7 @@ from_address = {
     "country": shipment_data["from_address"]["country"],
     "phone": shipment_data["from_address"]["phone"],
     "email": shipment_data["from_address"]["email"],
+    "federal_tax_id": shipment_data["from_address"]["federal_tax_id"],
 }
 
 return_address = {
@@ -63,6 +68,7 @@ return_address = {
     "country": shipment_data["return_address"]["country"],
     "phone": shipment_data["return_address"]["phone"],
     "email": shipment_data["return_address"]["email"],
+    "federal_tax_id": shipment_data["from_address"]["federal_tax_id"],
 }
 
 # CUSTOMS INFORMATION:
@@ -90,14 +96,18 @@ if shipment_data["customs_info"] is not None:
         "customs_items": customs_items,
     }
 
+# TAX INFORMATION
+if shipment_data["tax_identifiers"] is not None:
+    tax_identifiers = shipment_data["tax_identifiers"]
 
 # CREATE SHIPMENT ////////////////////////////////////////////////////////////////////////////////////////////////////////
 shipment = client.shipment.create(
-    # is_return=shipment_data.get("is_return", False),
+    is_return=shipment_data.get("is_return", False),
+    reference="0377-9777-7627",
     to_address=to_address,
-    # buyer_address=buyer_address,
+    buyer_address=buyer_address,
     from_address=from_address,
-    # return_address=return_address,
+    return_address=return_address,
     parcel={
         "length": shipment_data["parcel"]["length"],
         "width": shipment_data["parcel"]["width"],
@@ -105,34 +115,44 @@ shipment = client.shipment.create(
         "weight": shipment_data["parcel"]["weight"],
         "predefined_package": shipment_data["parcel"]["predefined_package"],
     },
-    # customs_info=customs_info,
+    customs_info=customs_info,
     options={
         **shipment_data["options"],
-        # "print_custom_1": "print custom 1",
-        # "print_custom_2": "print custom 2",
-        # "print_custom_3": "print custom 3",
-        # "invoice_number": "invoice number"
+        "suppress_etd": "true",
+        "commercial_invoice_format": "PNG",
+        # "label_date": "2025-09-26",
+        # "saturday_delivery": True,
+        # "carrier_insurance_amount": 300,
+        # "currency": "USD",
+        # "suppress_etd": True,
+        # "commercial_invoice_format": "PNG",
     },
-    # carrier_accounts=[settings.carriers["CANADA_POST"]],
-    # service="FEDEX_2_DAY",
+    tax_identifiers=tax_identifiers,
+    carrier_accounts=[settings.carriers["FEDEX"]],
+    # service="AxleHireDelivery",
 )
 
 print("The shipment was successfully created: ", shipment.id)
 
 # SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 # LOWEST RATE:
-# try:
-#     bought_shipment = client.shipment.buy(shipment.id, rate=shipment.lowest_rate())
-#     print("The shipment was successfully purchased: ", bought_shipment.id)
-# except Exception as error:
-#     print("...uh oh. The purchase request failed: ", error)
+if settings.SERVICE == "lowest":
+    print("Attempting to purchase the lowest rate available...")
+    try:
+        bought_shipment = client.shipment.buy(shipment.id, rate=shipment.lowest_rate())
+        print("The shipment was successfully purchased: ", bought_shipment.id)
+    except Exception as error:
+        print("...uh oh. The purchase request failed: ", error)
+
 
 # SPECIFIC CARRIER AND SERVICE:
-try:
-    bought_shipment = client.shipment.buy(
-        shipment.id,
-        rate=shipment.lowest_rate(["CanadaPost"], ["ExpeditedParcel"]),
-    )
-    print("The shipment was successfully purchased: ", bought_shipment.id)
-except Exception as error:
-    print("...uh oh. The purchase request failed: ", error)
+if settings.SERVICE == "specific":
+    print("Attempting to purchase...")
+    try:
+        bought_shipment = client.shipment.buy(
+            shipment.id,
+            rate=shipment.lowest_rate(["DHLPaket"], ["Retoure"]),
+        )
+        print("The shipment was successfully purchased: ", bought_shipment.id)
+    except Exception as error:
+        print("...uh oh. The purchase request failed: ", error)

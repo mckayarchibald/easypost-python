@@ -6,8 +6,12 @@ if settings.ENVIRONMENT == "test":
 if settings.ENVIRONMENT == "production":
     client = easypost.EasyPostClient(settings.EASYPOST_PRODUCTION_KEY)
 
-shipment = client.shipment.label(
-    "shp_239e684ae2c94bdc81160ab3fea54519", file_format="PDF"
+carrier_account = client.carrier_account.create(
+    type="UpsAccount",
+    description="",
+    credentials={
+        "account_number": "C0W838",
+    },
 )
 
-print(shipment.id)
+print(carrier_account)

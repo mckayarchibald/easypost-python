@@ -138,49 +138,46 @@ customs_info = {
     ],
 }
 
+parcel = {"weight": 32}
 # CREATE SHIPMENT ////////////////////////////////////////////////////////////////////////////////////////////////////////
 try:
-    shipment = client.shipment.create(
-        from_address=from_address,
-        to_address=to_address,
-        # return_address=return_address,
-        # buyer_address=buyer_address,
-        parcel={
-            "length": 15.37,
-            "width": 11,
-            "height": 5.25,
-            # "predefined_package": null,
-            "weight": 32,
+    shipment = client.shipment.create_and_buy_luma(
+        carrier_accounts=[settings.carriers["FEDEX"]],
+        to_address={
+            "name": "Dr. Steve Brule",
+            "street1": "5744 Silverton Ave",
+            "city": "McKinney",
+            "state": "TX",
+            "zip": "75070",
+            "country": "US",
+            "phone": "8573875756",
+            "email": "dr_steve_brule@gmail.com",
         },
-        options={"currency": "CAD"},
-        customs_info=customs_info,
-        carrier_accounts=[
-            settings.carriers["UPS"],
-            # settings.carriers["FEDEX_DEFAULT"],
-        ],
-        # service="NextDay",
-        # carrier="UPSMailInnovations",
-        # is_return=True,
+        from_address={
+            "name": "EasyPost",
+            "street1": "417 Montgomery Street",
+            "street2": "5th Floor",
+            "city": "San Francisco",
+            "state": "CA",
+            "zip": "94104",
+            "country": "US",
+            "phone": "4153334445",
+            "email": "support@easypost.com",
+        },
+        parcel={
+            "length": 20.2,
+            "width": 10.9,
+            "height": 5,
+            "weight": 65.9,
+        },
+        options={
+            "label_format": "PDF",
+            "label_size": "4x6",
+        },
+        ruleset_name="cheapest_delivery",
+        planned_ship_date="2026-01-24",
     )
 
-    print(shipment.id)
+    print(shipment)
 except Exception as error:
     print("...uh oh: ", error)
-
-# SHIPMENT BUY ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-# LOWEST RATE:
-try:
-    bought_shipment = client.shipment.buy(shipment.id, rate=shipment.lowest_rate())
-    print(bought_shipment.id)
-except Exception as error:
-    print("...uh oh: ", error)
-
-# SPECIFIC CARRIER AND SERVICE:
-# try:
-#     bought_shipment = client.shipment.buy(
-#         shipment.id,
-#         rate=shipment.lowest_rate(["CirroECommerce"], ["STDNJ"]),
-#     )
-#     print(bought_shipment.id)
-# except:
-#     print("It did not work")
